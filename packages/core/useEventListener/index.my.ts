@@ -1,4 +1,4 @@
-import { Ref, getCurrentScope, onScopeDispose, watch } from "vue";
+import { Ref, watch } from "vue";
 
 /**
  * We only allow the simplest API
@@ -39,10 +39,6 @@ export function useEventListener<EventType = Event>(
     stopWatch();
     cleanup();
   };
-
-  if (getCurrentScope()) {
-    onScopeDispose(stop);
-  }
 
   return stop;
 }
